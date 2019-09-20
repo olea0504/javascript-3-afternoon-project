@@ -53,13 +53,28 @@ var employees = [
 //Code Here
 
 
+function employeeUpdater() {
+  for(let prop in employees){
+    if(employees[prop].firstName === "Theo"){
+      delete employees[prop]
+    }
+    else if(employees[prop].firstName === 'Lorie'){
+      employees[prop].department = "HR"
+    }
+  }
+  return employees
+}
+
+//console.log(employeeUpdater())
+
+
 
 ////////// PROBLEM 2 //////////
 
 // Do not edit the code below.
 var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 // Do not edit the code above.
-
+// [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 /*
   The array above represents IDs tied to reported workplace accidents. 
   An employee accidentally entered in duplicates to array, making it look as though there are more accidents this year than there actually are.
@@ -69,8 +84,19 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 */
 
 //Code Here
-
-
+function removeDuplicates(workplaceAccidents){
+  var len = workplaceAccidents.length -1;
+  for(var i = 0; i < len; i++){
+    for(var j = len ; j > i ; j--){
+      if(workplaceAccidents[i] == workplaceAccidents[j]){
+        workplaceAccidents.splice(j,1);
+      }
+    }
+  }
+  return workplaceAccidents
+}
+//console.log(workplaceAccidents[1])
+console.log(removeDuplicates(workplaceAccidents))
 
 ////////// PROBLEM 3 //////////
 
@@ -97,8 +123,9 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1];
+
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -140,6 +167,16 @@ var myCar = {
 
 //Code Here
 
+function recordCleaner(){
+  for(let prop in myCar.accidents){
+    console.log(prop)
+    console.log("Hiiii")
+    if(myCar.accidents[prop].atFaultForAccident == true){
+      myCar.accidents[prop].atFaultForAccident = false
+    }
+  }
+  return myCar
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -158,5 +195,20 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 */
 
 //Code Here
-
+function looper(){
+  var i_len = numsArr.length ;
+  for(var i = 0; i < i_len; i++){
+    var j_len = numsArr[i].length ;
+    for(var j = 0; j < j_len; j++){
+      if(numsArr[i][j] % 2 == 1){
+        numsArr[i][j] = 'odd'
+      }
+      else if (numsArr[i][j] % 2 == 0){
+        numsArr[i][j] = 'even'
+      }
+    }
+  }
+  return numsArr
+}
+console.log(looper(numsArr))
 
